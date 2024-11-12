@@ -4,7 +4,6 @@ networks:
     backend:
 
 services:
-
     nginx:
         image: nginx:1.20.2
         container_name: nginx-${SPACE_NAME}
@@ -17,6 +16,7 @@ services:
             - php-8
         networks:
             - backend
+
     pg-test:
         container_name: pg-${SPACE_NAME}
         image: postgres:15

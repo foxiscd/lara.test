@@ -29,4 +29,10 @@ class RouteStop extends Model
         return $this->belongsTo(Stop::class);
     }
 
+    public static function getEnd($routeId): self
+    {
+        return self::where('route_id', $routeId)
+            ->orderBy('stop_order', 'desc')
+            ->first();
+    }
 }

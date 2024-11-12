@@ -28,4 +28,13 @@ class Route extends Model
     {
         return $this->hasOne(Schedule::class);
     }
+
+    public static function getRoutesByStops(int $from, int $to)
+    {
+        return self::whereHas('routeStops', function ($query) use ($from, $to) {
+            $query->whereIn('stop_id', [$from, $to]);
+        })->with(['routeStops' => function ($query) use ($from, $to) {
+            $query->whereIn('stop_id', [$from, $to])->orderBy('stop_order');
+        }])->get();
+    }
 }
