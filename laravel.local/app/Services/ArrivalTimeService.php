@@ -10,9 +10,9 @@ class ArrivalTimeService
     /**
      * @param $fromStop
      * @param $route
-     * @return array|string
+     * @return array
      */
-    public function getArrivalsTime($fromStop, $route): array|string
+    public function getArrivalsTime($fromStop, $route): array
     {
         $timeZone = 'Europe/Moscow';
         $currentTime = Carbon::now($timeZone);
